@@ -1,5 +1,5 @@
 # WLED-Weather-Lamp
-This project allows you to build a WLED controlled lamp that does weather visualization for your area. 
+This project allows you to build a WLED controlled lamp that provides weather visualization for your area. 
 
 Up Front warnings. 
 This project relies on data from your closest observation station as reported to weather.gov. This means some areas will recieve more frequent and more accurate updates to your specific location. If you live further away from the observation station, the data reported has the chance of being less accurate. In addition some stations do not update with the same frequency as others. As a result you may not see updates more frequently than once an hour. The point of this project was not to create the most accurate current weather display possible, more to create something fun that conveyed some useful information. 
