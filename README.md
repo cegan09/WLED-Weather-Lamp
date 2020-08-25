@@ -12,13 +12,13 @@ Required parts:
 NodeRed and MQTT Server
 There are many ways to implement these portions. The easiest is to simply install both on a raspberry pi. 
 I have used Mosquitto Broker for MQTT, the installation documentation can be found here - https://mosquitto.org/ . Be sure to set a static IP for your MQTT server. 
-Nodered installation instructions for the raspberry pi are here - https://nodered.org/docs/getting-started/raspberrypi . Be sure to set a static IP for your NodeRed Server.
+Nodered installation instructions for the raspberry pi are here - https://nodered.org/docs/getting-started/raspberrypi . Be sure to set a static IP for your NodeRed Server (this will be the same as the MQTT server if both are on the same device, but you do not have to have them on the same device). 
 
 Copy the NodeRed Flow code from the flow.txt file and paste it into the nodered import window to setup the flows. 
 
 Building and configuring the lamp. 
 1. Follow the instructions in the thingiverse page to construct the actual lamp. 
-2. Flash the ESP controller with WLED following their instructions (https://github.com/Aircoookie/WLED/wiki/Install-WLED-binary)
+2. Flash the ESP controller (D1 Mini) with WLED and connect it to your network following their instructions (https://github.com/Aircoookie/WLED/wiki/Install-WLED-binary)
 3. Setup a static IP for the WLED Controller (varies based on your home networking hardware)
 4. Make the following changes in the WLED settings:
   A) LED Settings
