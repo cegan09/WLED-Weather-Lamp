@@ -41,7 +41,8 @@ Building and configuring the lamp.
 Finding the location data from weather.gov. 
 You will need to know your local reporting station and the local area for forecast data in order to enter them in the nodered flow. 
 1. Go to weather.gov and enter your zip code to get the current conditions and forecast. One of the first sections will be current conditions at your local airport or other reporting station. You will need to write down the identifier code for that station. In this example it is KBOS for the Boston Airport. 
-**picture**
+
+![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/local%20station.PNG)
 
 2. Now you need the grid points for your local forecast from weather.gov. This takes two steps. First find the latitude and longitude for the area you want the forecast of. Go to maps.google.com and navigate to your location. Click once on the location you're interested in and a small popup at the bottom of the window will show the latitude and longitude of that point. 
 **picture**
