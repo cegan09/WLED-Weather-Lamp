@@ -45,9 +45,12 @@ You will need to know your local reporting station and the local area for foreca
 ![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/local%20station.PNG)
 
 2. Now you need the grid points for your local forecast from weather.gov. This takes two steps. First find the latitude and longitude for the area you want the forecast of. Go to maps.google.com and navigate to your location. Click once on the location you're interested in and a small popup at the bottom of the window will show the latitude and longitude of that point. 
-**picture**
+
+![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/lat%20long.PNG)
+
 Next you need to use those in an API call to weather.gov to find your grid points. In a new web browser tab, enter the URL https://api.weather.gov/points/{latitude},{longitude} and enter the latitude and longitude values you located on google maps. Down the page, in the properties section you will see the grid X and Y values that you need to record.
-**picture**
+
+![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/grid%20points.PNG)
 
 
 Initial Node Red Setup. 
