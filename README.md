@@ -42,17 +42,28 @@ Building and configuring the lamp.
      Apply Preset 1 at boot
      
    B) Time Setup
-    a) Set to your timezone
-    b) Short press macro - 1
-    c) Long Press macro - 2
-    d) Double Press macro - 3
-    e) macro 1 - &PL=2
-    f) macro 2 - &PL=3
-    g) macro 3 - &T=2
+   
+    Set to your timezone
+    
+    Short press macro - 1
+    
+    Long Press macro - 2
+    
+    Double Press macro - 3
+    
+    macro 1 - &PL=2
+    
+    macro 2 - &PL=3
+    
+    macro 3 - &T=2
+    
   C) Sync Interfaces
-    a) enable MQTT and set the IP address of your server
-    b) Set the device ID to "WLED-Weather"
-    c) Set the device topic to "wled/weather"
+    
+    enable MQTT and set the IP address of your server
+    
+    Set the device ID to "WLED-Weather"
+    
+    Set the device topic to "wled/weather"
 
 Finding the location data from weather.gov. 
 You will need to know your local reporting station and the local area for forecast data in order to enter them in the nodered flow. 
