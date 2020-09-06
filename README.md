@@ -5,9 +5,21 @@
 Items that still need completion:
 1. Code files are not yet uploaded. They will be soon. 
 2. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionall
-3. Thingiverse Link is not yet public as I am finishing the build guide. 
-4. Forecast handling is not yet finished. Anything that comes back as "some weather THEN some other weather" throws the unknown animation
-5. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
+3. Forecast handling is not yet finished. Anything that comes back as "some weather THEN some other weather" throws the unknown animation
+4. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
+
+
+Fuctionality Overview
+======================
+- The main behavior of the weather lamp is to poll your local observation station, and display the latest reported conditions and temperature. The bottom row of LEDs will show a color mapped representation of the current temperature. The rest of the lamp displays the set animation for that weather condition. 
+![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/conver1.jpg?raw=true)
+
+- A short press of the button on top will poll weather.gov for the next day's forecast and then display the corrisponding animation and high temperature. Currently there is a limitation where any forecast that lists some condition "then" some other condition will only show the first listed condition. In the future this may change. 
+
+- Long pressing the button will prompt a temperature visulization for the next 24(ish) hours. The lamp will poll weather.gov for a forecast and then display the received high or low temperatures for the next 3 time segments as three bands of color. Normally these bands will be the current day's high, that night's low, and the following day's hight. If pressed late enough at night it should display that night's low, the next day's hight, and the following night's low. The bottom band is the current with the top band being the furthest forecast segment. 
+![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/cover2.jpg?raw=true)
+
+- A double press of the button should turn the lamp off/on. The controller will remain on and communicating with the node red flow, but the LEDs will be powered off or on. 
 
 Future To-do List
 1. Write the how to on how to add animations of your own
@@ -15,6 +27,7 @@ Future To-do List
 
 
 This project allows you to build a WLED controlled lamp that provides weather visualization for your area. 
+----------------------------------------------------------------------------------------------------------
 
 Up Front warnings. 
 This project relies on data from your closest observation station as reported to weather.gov. This means some areas will recieve more frequent and more accurate updates to your specific location. If you live further away from the observation station, the data reported has the chance of being less accurate. In addition some stations do not update with the same frequency as others. As a result you may not see updates more frequently than once an hour. The point of this project was not to create the most accurate current weather display possible, more to create something fun that conveyed some useful information. 
