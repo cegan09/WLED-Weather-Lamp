@@ -3,10 +3,9 @@
 **Warning, project not yet complete. Please see the list of items not yet finished**
 
 Items that still need completion:
-1. Code files are not yet uploaded. They will be soon. 
-2. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionall
-3. Forecast handling is not yet finished. Anything that comes back as "some weather THEN some other weather" throws the unknown animation
-4. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
+1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionally
+2. Forecast handling is not yet finished. Anything that comes back as "some weather THEN some other weather" throws the unknown animation
+3. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
 
 
 Fuctionality Overview
