@@ -32,10 +32,15 @@ Building and configuring the lamp.
 2. Flash the ESP controller (D1 Mini) with WLED and connect it to your network following their instructions (https://github.com/Aircoookie/WLED/wiki/Install-WLED-binary)
 3. Setup a static IP for the WLED Controller (varies based on your home networking hardware)
 4. Make the following changes in the WLED settings:
+
   A) LED Settings
+     
      LED Count - 80
+     
      Max Current - set to your own power supply rating
+     
      Apply Preset 1 at boot
+     
    B) Time Setup
     a) Set to your timezone
     b) Short press macro - 1
