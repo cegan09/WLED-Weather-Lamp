@@ -43,7 +43,7 @@ Nodered installation instructions for the raspberry pi are here - https://nodere
 
 Once Node Red is installed you will need to install some initial nodes. From the upper right menu, select "manage palette" and then go to the install tab. Search for "node-red-contrib-color-convert" and install. Additionally you may install the "node-red-dashboard" nodes which will allow you to build a web dashboard to send the weather data to (not covered in this project). 
 
-Copy the NodeRed Flow code from the flow.txt file and paste it into the nodered import window to setup the flows. 
+Copy the NodeRed Flow code from the flow.txt file and paste it into the nodered import window to setup the flows. Alternatively you can open the json file in the import window, it will do the same thing.  
 
 Building and configuring the lamp. 
 1. Follow the instructions in the thingiverse page to construct the actual lamp. 
