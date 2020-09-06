@@ -16,7 +16,7 @@ Up Front warnings.
 This project relies on data from your closest observation station as reported to weather.gov. This means some areas will recieve more frequent and more accurate updates to your specific location. If you live further away from the observation station, the data reported has the chance of being less accurate. In addition some stations do not update with the same frequency as others. As a result you may not see updates more frequently than once an hour. The point of this project was not to create the most accurate current weather display possible, more to create something fun that conveyed some useful information. 
 
 Required parts:
-1. Physical Lamp - thingiverse link
+1. Physical Lamp - (Thingiverse)[https://www.thingiverse.com/thing:4566731]
 2. NodeRed server (can be installed on a computer or raspberry Pi)
 3. MQTT Server (can be installed on a computer or Raspberry Pi)
 
@@ -33,9 +33,9 @@ Building and configuring the lamp.
 3. Setup a static IP for the WLED Controller (varies based on your home networking hardware)
 4. Make the following changes in the WLED settings:
   A) LED Settings
-     a) LED Count - 80
-     b) Max Current - set to your own power supply rating
-     c) Apply Preset 1 at boot
+     LED Count - 80
+     Max Current - set to your own power supply rating
+     Apply Preset 1 at boot
    B) Time Setup
     a) Set to your timezone
     b) Short press macro - 1
