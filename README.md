@@ -22,8 +22,10 @@ Required parts:
 
 NodeRed and MQTT Server
 There are many ways to implement these portions. The easiest is to simply install both on a raspberry pi. 
-I have used Mosquitto Broker for MQTT, the installation documentation can be found here - https://mosquitto.org/ . Be sure to set a static IP for your MQTT server. 
+I have used Mosquitto Broker for MQTT, the installation documentation can be found here - https://mosquitto.org/ or here for a raspberry Pi specific tutorial https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/. Be sure to set a static IP for your MQTT server. 
 Nodered installation instructions for the raspberry pi are here - https://nodered.org/docs/getting-started/raspberrypi . Be sure to set a static IP for your NodeRed Server (this will be the same as the MQTT server if both are on the same device, but you do not have to have them on the same device). 
+
+Once Node Red is installed you will need to install some initial nodes. From the upper right menu, select "manage palette" and then go to the install tab. Search for "node-red-contrib-color-convert" and install. Additionally you may install the "node-red-dashboard" nodes which will allow you to build a web dashboard to send the weather data to (not covered in this project). 
 
 Copy the NodeRed Flow code from the flow.txt file and paste it into the nodered import window to setup the flows. 
 
@@ -81,32 +83,55 @@ Next you need to use those in an API call to weather.gov to find your grid point
 
 
 Initial Node Red Setup. 
-Once the flows are imported, there are a couple variables that need to be set before anything will run. 
-1. Configure the MQTT in node
-  A) Set the address to your MQTT broker ip and port (default is 1883). If your IP is 192.168.0.100 the entry should be 192.168.0.100:1883
-  B) Set the topic to "wled/weather/c"
+Once the flows are imported, there are a couple variables that need to be set before anything will run. In the Weather Lamp Setup Flow set the following:
+1. MQTT config Node
+  
+  Set the address to your MQTT broker ip and port (default is 1883). If your IP is 192.168.0.100 the entry should be 192.168.0.100:1883
+  
+  Set the topic to "wled/weather/c"
+  
 2. Configure the Weather API node
-  A) edit the node, in the URL field replace the KBOS station with your local station found above. 
+  
+  edit the node, in the URL field replace the KBOS station with your local station found above. 
+  
 3. Configure the Forecast API
-  A) Edit the node, in the URL field replace grip point values with the once you located in the above steps. 
+
+  Edit the node, in the URL field replace grip point values with the once you located in the above steps. 
+  
 4. Configure the WLED JSON Send node
-  A) Edit the node, in the URL field change the IP to be the IP of your WLED controller. Be sure not to change the /json/state at the end. 
+
+  Edit the node, in the URL field change the IP to be the IP of your WLED controller. Be sure not to change the /json/state at the end. 
+  
 5. Deploy the current flow
 
 
 Setting the WLED Save states
-1. In the Setup Functions Flow there are three input triggers, one for each WLED save state. You want to trigger each one and then save the state in WLED. 
-  A) Trigger the first line for save state 1. You should see an MQTT message come through the debug window with #010000 as the message for color set. 
-  B) Go to the WLED control page (at the IP of your WLED controller) and in favorites, make sure "saving mode" is checked and then select slot 1. 
-  C) Back in nodered, trigger the line for Save state 2. You should see the MQTT message come through with #000100 as the color
-  D) In WLED save this as state 2. 
-  E) Repeate with state 3, which should show #000001 as the MQTT message. Save this as state 3 in WLED. 
-2. This will setup the WLED controller with the specific colors needed to trigger different functions in nodered. 
 
-Enabling the rest of the nodered flow. 
-1. In the main WLED Control Flow, scroll down to the "Current Conditions" section, edit the 15minute trigger node, and enable it. Here you can also change the frequency that nodered polls for updates, but it's not worth polling any more frequently than your local station pushes updates. 
-2. Next in the "MQTT Handling" section, edit and enable the link in node. 
+In the Weather Lamp Setup Flow, do the following:
+1. At the bottom of the flow there are three input triggers, one for each WLED save state. You want to trigger each one and then save the state in WLED. 
+
+  A) Trigger the first line for save state 1. You should see an MQTT message come through the debug window with #010000 as the message for color set. 
+  
+  B) Go to the WLED control page (at the IP of your WLED controller) and in favorites, make sure "saving mode" is checked and then select slot 1. You should see a confirmation message that save state 1 is saved
+  
+  C) Back in nodered, trigger the line for Save state 2. You should see the MQTT message come through the debug window with #000100 as the color
+  
+  D) In WLED save this as state 2. 
+  
+  E) Repeate with state 3, which should show #000001 as the MQTT message. Save this as state 3 in WLED. 
+  
+2. To test that this was done correctly, first unplug the lamp, then plug it in again. In the debug window of node red you should see an MQTT message of "#010000" come through. Next, short press the button on the lamp, which should have a message of "#000100" come through the debug window. Lastly long press the button, which should show "#000001" in the debug window. If all of these work, you're ready to continue
+
+Enabling and configuring the rest of the nodered flow. 
+
+1. In the Weather Lamp Setup Flow, scroll down to the "Current Condition polling interfal" section, edit the Update Trigger node, and enable it (bottom left of the window). Here you can also change the frequency that nodered polls for updates. Note that it's not worth polling much faster than your local station actually updates. For some locations this may be often as as the weather changes. Other stations may be as slow as once per hour. The default is set to every 5 minutes. 
+
+2. In the Weather Lamp Setup Flow, scroll down to the "Current Conditions Reactivation Delay" section, edit the delay node to your prefereance. This node determines how long the lamp will show the forecast animations before returning to show the current conditions. The default here is 1 minute, feel free to change this to as long as you wish. 
+
+3. Next, at the top of the Weather Lamp Setup Flow, edit the link out node attached to the MQTT Config node, at the bottom left of the window enable the node. 
+
 3. Deploy the Flows again to enable the full functionality. These items were dissabled to stop the flow trying to run during the save state setup steps. 
+
 4. Enjoy the colorful distraction!
 
  
