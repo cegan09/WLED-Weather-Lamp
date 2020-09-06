@@ -9,6 +9,10 @@ Items that still need completion:
 4. Forecast handling is not yet finished. Anything that comes back as "some weather THEN some other weather" throws the unknown animation
 5. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
 
+Future To-do List
+1. Write the how to on how to add animations of your own
+2. Write the advanced guide to tweaking behavior for forecast modes
+
 
 This project allows you to build a WLED controlled lamp that provides weather visualization for your area. 
 
@@ -110,15 +114,15 @@ Setting the WLED Save states
 In the Weather Lamp Setup Flow, do the following:
 1. At the bottom of the flow there are three input triggers, one for each WLED save state. You want to trigger each one and then save the state in WLED. 
 
-  A) Trigger the first line for save state 1. You should see an MQTT message come through the debug window with #010000 as the message for color set. 
+    A) Trigger the first line for save state 1. You should see an MQTT message come through the debug window with #010000 as the message for color set. 
   
-  B) Go to the WLED control page (at the IP of your WLED controller) and in favorites, make sure "saving mode" is checked and then select slot 1. You should see a confirmation message that save state 1 is saved
+    B) Go to the WLED control page (at the IP of your WLED controller) and in favorites, make sure "saving mode" is checked and then select slot 1. You should see a confirmation message that save state 1 is saved
   
-  C) Back in nodered, trigger the line for Save state 2. You should see the MQTT message come through the debug window with #000100 as the color
+    C) Back in nodered, trigger the line for Save state 2. You should see the MQTT message come through the debug window with #000100 as the color
   
-  D) In WLED save this as state 2. 
+    D) In WLED save this as state 2. 
   
-  E) Repeate with state 3, which should show #000001 as the MQTT message. Save this as state 3 in WLED. 
+    E) Repeate with state 3, which should show #000001 as the MQTT message. Save this as state 3 in WLED. 
   
 2. To test that this was done correctly, first unplug the lamp, then plug it in again. In the debug window of node red you should see an MQTT message of "#010000" come through. Next, short press the button on the lamp, which should have a message of "#000100" come through the debug window. Lastly long press the button, which should show "#000001" in the debug window. If all of these work, you're ready to continue
 
