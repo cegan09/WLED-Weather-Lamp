@@ -4,8 +4,7 @@
 
 Items that still need completion:
 1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionally
-2. Forecast handling is not yet finished. Anything that comes back as "some weather THEN some other weather" throws the unknown animation
-3. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
+2. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
 
 
 Fuctionality Overview
@@ -13,7 +12,7 @@ Fuctionality Overview
 - The main behavior of the weather lamp is to poll your local observation station, and display the latest reported conditions and temperature. The bottom row of LEDs will show a color mapped representation of the current temperature. The rest of the lamp displays the set animation for that weather condition. 
 ![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/conver1.jpg?raw=true)
 
-- A short press of the button on top will poll weather.gov for the next day's forecast and then display the corrisponding animation and high temperature. Currently there is a limitation where any forecast that lists some condition "then" some other condition will only show the first listed condition. In the future this may change. 
+- A short press of the button on top will poll weather.gov for the next day's forecast and then display the corrisponding animation and high temperature. Any forecast that comes back as "some weather THEN some other weather" will show the first condition for 5 seconds, then the second condition for 5 seconds, and then return to the first condition for the remainder of the forecast delay time (default is 1 minute total). The temperature displayed will be the high for the day. Any forecast that comes back "some weather AND some other weather, for example cloudy and showers, will throw the unknown animation. This is on the list to correct in the future.  
 
 - Long pressing the button will prompt a temperature visulization for the next 24(ish) hours. The lamp will poll weather.gov for a forecast and then display the received high or low temperatures for the next 3 time segments as three bands of color. Normally these bands will be the current day's high, that night's low, and the following day's hight. If pressed late enough at night it should display that night's low, the next day's hight, and the following night's low. The bottom band is the current with the top band being the furthest forecast segment. 
 ![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/cover2.jpg?raw=true)
