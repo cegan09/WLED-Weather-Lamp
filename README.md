@@ -6,6 +6,10 @@ Items that still need completion:
 1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionally
 2. There is still a lot of optimization to be done with the nodered flow, though most funstionality works for now
 
+Updating the Node Red Flow
+==========================
+See the bottom of these instructions for how to update the node red flows when new version are posted. 
+
 
 Fuctionality Overview
 ======================
@@ -189,3 +193,20 @@ Enabling and configuring the rest of the nodered flow.
 4. Enjoy the colorful distraction!
 
  
+ 
+ Updating the Node Red Flow
+ =================================
+ 
+ I will continue to update the node red flow as I add more features and animations. Updating is unfortunatly not the simplest of processes. It will require you to go through the node red setup steps again. I have not found another way to provide just the updated sections because of all the link in/out nodes that break if you just replace pieces. So you will need to import the new flow and then follow the setup steps again. I will try my best to minimize the number of times I update the node red flow and maximize the number of changes per update. 
+ 
+ Each Time I post a new node red flow I will version it. The initial post is simply flows.txt/json. Subsiquent versions will have a version identifier, for example flows rev-.txt/json. 
+
+Updating:
+Check the latest posted flows.txt/json files and verify that there is a newer version posted from what you have running. 
+
+In node red, go to the import flow menu similar to when you first imported at initial settings. Paste the new version or upload the json file. This will create a brand new flow in addition to the ones you already have deployed. Now you have to update the setup nodes. 
+
+There are two options here, you can either manually update the data fields like you did at inital setup, or you can copy and paste your already configured nodes and replace the unconfigured ones. I do not recomend this if you aren't familiar with node red and how to link the nodes back togehter. You CANNOT copy the link in/out nodes because they will not be linked correctly. The easiest way to do this is simply jump back up to the "Initial Node Red Setup" section of this readme and follow those steps to configure the setup area again. You do NOT have to repeat the save state configuration part, simply just enter the MQTT, weather api info, JSON send node, and enable all the disabled nodes. 
+
+Once you have configured the new version, you do need to delete the old flows. To do this open the tab for the old flow, then in the upper right menu select the delete flow option. Once you have deleted all old flows, deploy the new flow and you should be all set to run with the latest version. 
+![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2016.png?raw=true)
