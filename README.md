@@ -65,7 +65,7 @@ Building and configuring the lamp.
      
      Set the "Apply preset (    ) at boot" to preset 1. 
      
-     ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%203.png?raw=true)
+   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%203.png?raw=true)
      
    B) Time & Macros
    
@@ -87,7 +87,7 @@ Building and configuring the lamp.
     
     Double Press macro - 3
     
-    ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%204.png?raw=true)
+   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%204.png?raw=true)
     
   C) Sync Interfaces
     
@@ -97,7 +97,7 @@ Building and configuring the lamp.
     
     Set the device topic to "wled/weather"
     
-    ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%205.png?raw=true)
+   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%205.png?raw=true)
 
 Finding the location data from weather.gov. 
 You will need to know your local reporting station and the local area for forecast data in order to enter them in the nodered flow. 
