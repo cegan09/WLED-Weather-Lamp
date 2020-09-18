@@ -37,36 +37,41 @@ Required parts:
 
 NodeRed and MQTT Server
 There are many ways to implement these portions. The easiest is to simply install both on a raspberry pi. 
-I have used Mosquitto Broker for MQTT, the installation documentation can be found here - https://mosquitto.org/ or here for a raspberry Pi specific tutorial https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/. Be sure to set a static IP for your MQTT server. 
-Nodered installation instructions for the raspberry pi are here - https://nodered.org/docs/getting-started/raspberrypi . Be sure to set a static IP for your NodeRed Server (this will be the same as the MQTT server if both are on the same device, but you do not have to have them on the same device). 
+I have used Mosquitto Broker for MQTT, the installation documentation can be found here - https://mosquitto.org/ or here for a raspberry Pi specific tutorial https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/. 
+
+Make sure you follow the instructions to set mosquitto to start at boot so you don't have to do it manually if the Pi ever reboots. Also be sure to set a static IP for your MQTT server. If your router reboots it will shuffle your device IPs around and the lamp will stop working. Setting static IPs is done through your router and the exact step varies depending on the router. Google will find a guide for you. 
+
+Nodered installation instructions for the raspberry pi are here - https://nodered.org/docs/getting-started/raspberrypi . Again make sure you set it to start on boot and be sure to set a static IP for your NodeRed Server (this will be the same as the MQTT server if both are on the same device, but you do not have to have them on the same device). 
 
 Once Node Red is installed you will need to install some initial nodes. From the upper right menu, select "manage palette" and then go to the install tab. Search for "node-red-contrib-color-convert" and install. Additionally you may install the "node-red-dashboard" nodes which will allow you to build a web dashboard to send the weather data to (not covered in this project). 
+![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%201.png?raw=true)
 
-Copy the NodeRed Flow code from the flow.txt file and paste it into the nodered import window to setup the flows. Alternatively you can open the json file in the import window, it will do the same thing.  
+Copy the NodeRed Flow code from the flow.txt file (this project, files folder) and paste it into the nodered import window to setup the flows. Alternatively you can open the json file in the import window, it will do the same thing.  
+![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%202.png?raw=true)
 
 Building and configuring the lamp. 
 1. Follow the instructions in the thingiverse page to construct the actual lamp. 
-2. Flash the ESP controller (D1 Mini) with WLED and connect it to your network following their instructions (https://github.com/Aircoookie/WLED/wiki/Install-WLED-binary)
-3. Setup a static IP for the WLED Controller (varies based on your home networking hardware)
+2. Flash the ESP controller (D1 Mini) with WLED and connect it to your network following their instructions (https://github.com/Aircoookie/WLED/wiki/Install-WLED-binary)  This is a much more comprehensive guide that will walk you through the network setup steps and give a good guide to the interface in general. https://tynick.com/blog/11-03-2019/getting-started-with-wled-on-esp8266/
+3. Setup a static IP for the WLED Controller (varies based on your home networking hardware) and write it down for future steps. 
 4. Make the following changes in the WLED settings:
 
   A) LED Settings
      
      LED Count - 80
      
-     Max Current - set to your own power supply rating
+     Max Current - set to your own power supply rating. Note that this is in milliamps, so if you have a 3amp supply you would enter 3000mA. Also make sure that the Automatic Brightness Limiter box is checked (it should be by default)
      
-     Apply Preset 1 at boot
+     Make sure the "Turn LEDs on after power up/reboot" option is checked, it should be by default 
      
-   B) Time Setup
+     Set the "Apply preset (    ) at boot" to preset 1. 
+     
+   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%203.png?raw=true)
+     
+   B) Time & Macros
    
-    Set to your timezone
+    Set to your timezone and check the "Get Time from NPT Server" button if you wish, it won't hurt anything if you don't. 
     
-    Short press macro - 1
-    
-    Long Press macro - 2
-    
-    Double Press macro - 3
+    Set the following Macros:
     
     macro 1 - &PL=2
     
@@ -74,13 +79,25 @@ Building and configuring the lamp.
     
     macro 3 - &T=2
     
+    Set the following button press macros:
+    
+    Short press macro - 1
+    
+    Long Press macro - 2
+    
+    Double Press macro - 3
+    
+   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%204.png?raw=true)
+    
   C) Sync Interfaces
     
-    enable MQTT and set the IP address of your server
+    enable MQTT and set the IP address of your server (set it previous steps when you installed mosquitto)
     
     Set the device ID to "WLED-Weather"
     
     Set the device topic to "wled/weather"
+    
+   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%205.png?raw=true)
 
 Finding the location data from weather.gov. 
 You will need to know your local reporting station and the local area for forecast data in order to enter them in the nodered flow. 
