@@ -12,6 +12,7 @@ See the bottom of these instructions for how to update the node red flows when n
 Revision History
 ======================
 Rev -: Initial release
+
 Rev A: Update to implement more animations. Combined the setup and main flow into a single flow (setup instructions updated to reflect). Added the initial document for creating animations to the files folder. Other minor tweaks to the flow
 
 Fuctionality Overview
