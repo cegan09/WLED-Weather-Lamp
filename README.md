@@ -1,9 +1,17 @@
 # WLED-Weather-Lamp
+This project allows you to build a WLED controlled lamp that provides weather visualization for your area. 
+----------------------------------------------------------------------------------------------------------
 
 **Warning, project not yet complete. Please see the list of items not yet finished**
 
 Items that still need completion:
 1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionally
+
+A word on safety
+================
+As I dive into implementing weather alerts I need to make something clear. This project is not intended to be a fool proof device for warning you about danerous conditions. There is no way I can gaurantee that this project will be without mistakes or glitches and as such you should not rely on this to alert you to life theatening conditions with 100% accuracy. That caveat stated, I am looking to add the ability of this project to poll active alerts from weather.gov and react accordingly. Some alerts will trigger the lamp to simplly flash solid red, which should be indication that it's possible there is weather close enough to you that you should be worried. These are alerts such as evacuation notices, tornado warnings, fire warnings, basically alerts that if they are true for your location could be life threatening. Again, I am not trying to design a life saving device, so please please do not use it that way if you happen to live in an area prone to more extreme weather. Alerts that are less threatening, such as watches, heat and cold warnings, air quality, things along that line will have dedicated animations rather than the solid blinking red. 
+
+
 
 Updating the Node Red Flow
 ==========================
@@ -28,12 +36,12 @@ Fuctionality Overview
 - A double press of the button should turn the lamp off/on. The controller will remain on and communicating with the node red flow, but the LEDs will be powered off or on. 
 
 Future To-do List
-1. Write the how to on how to add animations of your own
-2. Write the advanced guide to tweaking behavior for forecast modes
+1. Add the ability to change animations based on time of day so that there are day/night versions and other time specific animations
+2. Add the ability to check for alerts in your area
 
 
-This project allows you to build a WLED controlled lamp that provides weather visualization for your area. 
-----------------------------------------------------------------------------------------------------------
+Building the Lamp
+=================
 
 Up Front warnings. 
 This project relies on data from your closest observation station as reported to weather.gov. This means some areas will recieve more frequent and more accurate updates to your specific location. If you live further away from the observation station, the data reported has the chance of being less accurate. In addition some stations do not update with the same frequency as others. As a result you may not see updates more frequently than once an hour. The point of this project was not to create the most accurate current weather display possible, more to create something fun that conveyed some useful information. 
