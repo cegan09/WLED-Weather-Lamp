@@ -23,6 +23,9 @@ Rev -: Initial release
 
 Rev A: Update to implement more animations. Combined the setup and main flow into a single flow (setup instructions updated to reflect). Added the initial document for creating animations to the files folder. Other minor tweaks to the flow
 
+Rev B: Added the starting pieces for time of day dependant animations and weather alerts. Currently there is a night version of the "Clear" animation along with a sunrise/sunset animation and these will enable for your area based on what time those events happen in your area. Alerts are enabled for a small number of high risk alerts and some lesser alerts like heat/cold warnings hurrican warnings, tornado warnings, dust warnings. These two features will be filled out in future releases. Also changed the function that correlates temperature to color. 
+New nodes required to be installed - "node-red-contrib-suncron"
+
 Fuctionality Overview
 ======================
 - The main behavior of the weather lamp is to poll your local observation station, and display the latest reported conditions and temperature. The bottom row of LEDs will show a color mapped representation of the current temperature. The rest of the lamp displays the set animation for that weather condition. 
@@ -59,7 +62,7 @@ Make sure you follow the instructions to set mosquitto to start at boot so you d
 
 Nodered installation instructions for the raspberry pi are here - https://nodered.org/docs/getting-started/raspberrypi . Again make sure you set it to start on boot and be sure to set a static IP for your NodeRed Server (this will be the same as the MQTT server if both are on the same device, but you do not have to have them on the same device). 
 
-Once Node Red is installed you will need to install some initial nodes. From the upper right menu, select "manage palette" and then go to the install tab. Search for "node-red-contrib-color-convert" and install. Additionally you may install the "node-red-dashboard" nodes which will allow you to build a web dashboard to send the weather data to (not covered in this project). 
+Once Node Red is installed you will need to install some initial nodes. From the upper right menu, select "manage palette" and then go to the install tab. Search for "node-red-contrib-color-convert" and install. Search for "node-red-contrib-suncron" and install. Additionally you may install the "node-red-dashboard" nodes which will allow you to build a web dashboard to send the weather data to (not covered in this project). 
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%201.png?raw=true)
 
 Copy the NodeRed Flow code from the flow rev [].txt file (this project, files folder, pick the latest revision) and paste it into the nodered import window to setup the flows. Alternatively you can open the json file in the import window, it will do the same thing.  
@@ -121,7 +124,7 @@ You will need to know your local reporting station and the local area for foreca
 
 ![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/local%20station.PNG)
 
-2. Now you need the grid points for your local forecast from weather.gov. This takes two steps. First find the latitude and longitude for the area you want the forecast of. Go to maps.google.com and navigate to your location. Click once on the location you're interested in and a small popup at the bottom of the window will show the latitude and longitude of that point. 
+2. Now you need the grid points for your local forecast from weather.gov. This takes two steps. First find the latitude and longitude for the area you want the forecast of. Go to maps.google.com and navigate to your location. Click once on the location you're interested in and a small popup at the bottom of the window will show the latitude and longitude of that point. Record the Lat/long as you will need it in several locations.
 
 ![image](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/lat%20long.PNG)
 
@@ -158,7 +161,15 @@ Once the flow is imported, there are a couple variables that need to be set befo
   
   ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%209.png?raw=true)
   
-5. Deploy the current flow
+5. Configure the Local Alert API Node
+
+  Edit the node, in the URL field change the latitude and longitude at the end to your local lat/long (located earlier when finding your weather.gov station and grid points). Make sure you leave the "%2C" between the latitude and longitude values. 
+  
+6. Configure the suncron node
+
+  Edit the suncron node and enter the same latitude and longitude values you just used for the local alerts. There are a lot of other variables in this node, but they should be left as is. 
+  
+7. Deploy the current flow
 
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2010.png?raw=true)
 
@@ -216,9 +227,11 @@ Enabling and configuring the rest of the nodered flow.
 Updating:
 Check the latest posted flows.txt/json files and verify that there is a newer version posted from what you have running. 
 
+In the version descriptions I will mention if I require new nodes to be installed. Make sure to install these before importing the new flow to prevent errors. 
+
 In node red, go to the import flow menu similar to when you first imported at initial settings. Paste the new version or upload the json file. This will create a brand new flow in addition to the ones you already have deployed. Now you have to update the setup nodes. 
 
-There are two options here, you can either manually update the data fields like you did at inital setup, or you can copy and paste your already configured nodes and replace the unconfigured ones. I do not recomend this if you aren't familiar with node red and how to link the nodes back togehter. You CANNOT copy the link in/out nodes because they will not be linked correctly. The easiest way to do this is simply jump back up to the "Initial Node Red Setup" section of this readme and follow those steps to configure the setup area again. You do NOT have to repeat the save state configuration part, simply just enter the MQTT, weather api info, JSON send node, and enable all the disabled nodes. 
+There are two options here, you can either manually update the data fields like you did at inital setup, or you can copy and paste your already configured nodes and replace the unconfigured ones. I do not recomend this if you aren't familiar with node red and how to link the nodes back togehter. You CANNOT copy the link in/out nodes because they will not be linked correctly. The easiest way to do this is simply jump back up to the "Initial Node Red Setup" section of this readme and follow those steps to configure the setup area again. You do NOT have to repeat the save state configuration part once the save states are saved they are done for all future versions, simply configure the nodes in teh User defined variables enable all the disabled nodes. 
 
 Once you have configured the new version, you do need to delete the old flows. To do this open the tab for the old flow, then in the upper right menu select the delete flow option. Once you have deleted all old flows, deploy the new flow and you should be all set to run with the latest version. 
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2016.png?raw=true)
