@@ -38,6 +38,8 @@ Fuctionality Overview
 
 - A double press of the button should turn the lamp off/on. The controller will remain on and communicating with the node red flow, but the LEDs will be powered off or on. 
 
+A short demo video can be seen here - https://www.youtube.com/watch?v=mZIi-sJFEzc&feature=emb_title
+
 Future To-do List
 1. Add the ability to change animations based on time of day so that there are day/night versions and other time specific animations
 2. Add the ability to check for alerts in your area
