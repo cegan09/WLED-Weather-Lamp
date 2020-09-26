@@ -64,6 +64,7 @@ Nodered installation instructions for the raspberry pi are here - https://nodere
 
 Once Node Red is installed you will need to install some initial nodes. From the upper right menu, select "manage palette" and then go to the install tab. Search for "node-red-contrib-color-convert" and install. Search for "node-red-contrib-suncron" and install. Additionally you may install the "node-red-dashboard" nodes which will allow you to build a web dashboard to send the weather data to (not covered in this project). 
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%201.png?raw=true)
+![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2019.png?raw=true)
 
 Copy the NodeRed Flow code from the flow rev [].txt file (this project, files folder, pick the latest revision) and paste it into the nodered import window to setup the flows. Alternatively you can open the json file in the import window, it will do the same thing.  
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%202.png?raw=true)
@@ -165,9 +166,13 @@ Once the flow is imported, there are a couple variables that need to be set befo
 
   Edit the node, in the URL field change the latitude and longitude at the end to your local lat/long (located earlier when finding your weather.gov station and grid points). Make sure you leave the "%2C" between the latitude and longitude values. 
   
+  ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2017.png?raw=true)
+  
 6. Configure the suncron node
 
   Edit the suncron node and enter the same latitude and longitude values you just used for the local alerts. There are a lot of other variables in this node, but they should be left as is. 
+  
+  ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2018.png?raw=true)
   
 7. Deploy the current flow
 
@@ -234,6 +239,7 @@ In node red, go to the import flow menu similar to when you first imported at in
 There are two options here, you can either manually update the data fields like you did at inital setup, or you can copy and paste your already configured nodes and replace the unconfigured ones. I do not recomend this if you aren't familiar with node red and how to link the nodes back togehter. You CANNOT copy the link in/out nodes because they will not be linked correctly. The easiest way to do this is simply jump back up to the "Initial Node Red Setup" section of this readme and follow those steps to configure the setup area again. You do NOT have to repeat the save state configuration part once the save states are saved they are done for all future versions, simply configure the nodes in teh User defined variables enable all the disabled nodes. 
 
 Once you have configured the new version, you do need to delete the old flows. To do this open the tab for the old flow, then in the upper right menu select the delete flow option. Once you have deleted all old flows, deploy the new flow and you should be all set to run with the latest version. 
+
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2016.png?raw=true)
 
 
