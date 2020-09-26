@@ -239,6 +239,7 @@ In node red, go to the import flow menu similar to when you first imported at in
 There are two options here, you can either manually update the data fields like you did at inital setup, or you can copy and paste your already configured nodes and replace the unconfigured ones. I do not recomend this if you aren't familiar with node red and how to link the nodes back togehter. You CANNOT copy the link in/out nodes because they will not be linked correctly. The easiest way to do this is simply jump back up to the "Initial Node Red Setup" section of this readme and follow those steps to configure the setup area again. You do NOT have to repeat the save state configuration part once the save states are saved they are done for all future versions, simply configure the nodes in teh User defined variables enable all the disabled nodes. 
 
 Once you have configured the new version, you do need to delete the old flows. To do this open the tab for the old flow, then in the upper right menu select the delete flow option. Once you have deleted all old flows, deploy the new flow and you should be all set to run with the latest version. 
+
 ![IMAGE](https://github.com/cegan09/WLED-Weather-Lamp/blob/master/pictures/node%20red%20setup%2016.png?raw=true)
 
 
