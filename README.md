@@ -5,13 +5,16 @@ This project allows you to build a WLED controlled lamp that provides weather vi
 **Warning, project not yet complete. Please see the list of items not yet finished**
 
 Items that still need completion:
-1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionally
+1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionall
+
 
 A word on safety
 ================
 As I dive into implementing weather alerts I need to make something clear. This project is not intended to be a fool proof device for warning you about danerous conditions. There is no way I can gaurantee that this project will be without mistakes or glitches and as such you should not rely on this to alert you to life theatening conditions with 100% accuracy. That caveat stated, I am looking to add the ability of this project to poll active alerts from weather.gov and react accordingly. Some alerts will trigger the lamp to simplly flash solid red, which should be indication that it's possible there is weather close enough to you that you should be worried. These are alerts such as evacuation notices, tornado warnings, fire warnings, basically alerts that if they are true for your location could be life threatening. Again, I am not trying to design a life saving device, so please please do not use it that way if you happen to live in an area prone to more extreme weather. Alerts that are less threatening, such as watches, heat and cold warnings, air quality, things along that line will have dedicated animations rather than the solid blinking red. 
 
-
+Random Notes
+==========================
+The instructions below are for WLED version 0.10.02. There is a new version that completely changes presets and macros. I suggest you stick to 0.10.02 until I can update instructions for the new version of WLED
 
 Updating the Node Red Flow
 ==========================
