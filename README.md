@@ -2,9 +2,13 @@
 This project allows you to build a WLED controlled lamp that provides weather visualization for your area. 
 ----------------------------------------------------------------------------------------------------------
 
-**Warning, project not yet complete. Please see the list of items not yet finished**
+## Project Update
+I have largely abandoned this version of the project. This guide will still work, the code should still work if you wish to build this version. 
+I have been working on a new version that is done purely on a microcontroller that eliminates the need to link the physical lamp to a node red install. Once this version is finished I will link an update to that version. 
 
-Items that still need completion:
+
+
+### Items that still need completion:
 1. Not all weather animations are created yet. The common ones are, but there are still enough incomplete that you will see the unknown animation occasionall
 
 
